@@ -1,0 +1,6 @@
+{
+  "name": "MEP Drawing & Engineering Services",
+  "description": "Professional MEP drawing and engineering support for residential, commercial and industrial projects, including HVAC, plumbing, electrical, fire protection, Revit BIM and MEP coordination.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

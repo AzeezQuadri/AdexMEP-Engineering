@@ -1,0 +1,307 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-main: #060913;
+    --bg-card: #0c1424;
+    --bg-card-hover: #111d33;
+    --cyan-primary: #06b6d4;
+    --cyan-light: #38bdf8;
+    --cyan-glow: rgba(6, 182, 212, 0.15);
+    --amber-accent: #f59e0b;
+    --blueprint-grid: rgba(56, 189, 248, 0.05);
+  }
+
+  body {
+    background-color: #050811;
+    color: #f1f5f9;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Dynamic Font Switcher Rules */
+[data-font="fire"] h1,
+[data-font="fire"] h2,
+[data-font="fire"] h3,
+[data-font="fire"] h4,
+[data-font="fire"] .font-display {
+  font-family: 'Russo One', 'Space Grotesk', sans-serif !important;
+  letter-spacing: 0.02em;
+}
+
+[data-font="blueprint"] h1,
+[data-font="blueprint"] h2,
+[data-font="blueprint"] h3,
+[data-font="blueprint"] h4,
+[data-font="blueprint"] .font-display {
+  font-family: 'Space Grotesk', sans-serif !important;
+  letter-spacing: -0.01em;
+}
+
+[data-font="modern"] h1,
+[data-font="modern"] h2,
+[data-font="modern"] h3,
+[data-font="modern"] h4,
+[data-font="modern"] .font-display {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+[data-font="orbitron"] h1,
+[data-font="orbitron"] h2,
+[data-font="orbitron"] h3,
+[data-font="orbitron"] h4,
+[data-font="orbitron"] .font-display {
+  font-family: 'Orbitron', sans-serif !important;
+  letter-spacing: 0.05em;
+}
+
+[data-font="cadmono"] h1,
+[data-font="cadmono"] h2,
+[data-font="cadmono"] h3,
+[data-font="cadmono"] h4,
+[data-font="cadmono"] .font-display {
+  font-family: 'JetBrains Mono', monospace !important;
+  letter-spacing: -0.02em;
+}
+
+/* Fire Theme Visual FX: Red, White & Black displaying fire */
+@keyframes fireFlickerGlow {
+  0%, 100% {
+    box-shadow: 0 0 16px rgba(239, 68, 68, 0.75), 0 0 32px rgba(249, 115, 22, 0.45), inset 0 0 10px rgba(255, 255, 255, 0.15);
+    border-color: rgba(239, 68, 68, 0.9);
+  }
+  50% {
+    box-shadow: 0 0 26px rgba(239, 68, 68, 0.95), 0 0 45px rgba(255, 255, 255, 0.65), inset 0 0 16px rgba(239, 68, 68, 0.35);
+    border-color: rgba(255, 255, 255, 0.95);
+  }
+}
+
+@keyframes flameWaver {
+  0%, 100% {
+    transform: scale(1) translateY(0) rotate(-1.5deg);
+    filter: drop-shadow(0 0 8px #ef4444) drop-shadow(0 0 16px #f97316);
+  }
+  33% {
+    transform: scale(1.12) translateY(-1px) rotate(2deg);
+    filter: drop-shadow(0 0 14px #ef4444) drop-shadow(0 0 24px #ffffff);
+  }
+  66% {
+    transform: scale(0.96) translateY(0.5px) rotate(-2deg);
+    filter: drop-shadow(0 0 10px #f97316) drop-shadow(0 0 18px #ef4444);
+  }
+}
+
+@keyframes fireSparkle {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  50% { transform: translateY(-7px) scale(1.25); opacity: 0.9; }
+  100% { transform: translateY(-14px) scale(0); opacity: 0; }
+}
+
+.animate-fire-glow {
+  animation: fireFlickerGlow 2.5s infinite ease-in-out;
+}
+
+.animate-flame-waver {
+  animation: flameWaver 1.6s infinite ease-in-out;
+}
+
+.animate-fire-spark {
+  animation: fireSparkle 1.2s infinite ease-out;
+}
+
+/* Fire Theme active headline illumination */
+[data-font="fire"] .text-alight {
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95), 0 0 25px rgba(239, 68, 68, 0.5), 0 0 42px rgba(249, 115, 22, 0.35);
+}
+
+[data-font="fire"] .text-alight-cyan {
+  color: #fed7aa;
+  text-shadow: 0 0 16px rgba(239, 68, 68, 0.85), 0 0 32px rgba(249, 115, 22, 0.55), 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+/* High-tech MEP CAD & Blueprint Grid Backgrounds */
+.bg-blueprint-grid {
+  background-image: 
+    linear-gradient(to right, rgba(56, 189, 248, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.bg-blueprint-grid-dense {
+  background-image: 
+    linear-gradient(to right, rgba(56, 189, 248, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.08) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.bg-blueprint-radial {
+  background: radial-gradient(circle at 50% 15%, rgba(6, 182, 212, 0.12) 0%, rgba(37, 99, 235, 0.05) 40%, rgba(5, 8, 17, 0) 75%);
+}
+
+.bg-circuit-glow {
+  background: radial-gradient(ellipse at top, rgba(14, 165, 233, 0.15), transparent 60%);
+}
+
+/* Precision Engineering Crosshairs & CAD Corner Marks */
+.crosshair-corner {
+  position: relative;
+}
+.crosshair-corner::before,
+.crosshair-corner::after {
+  content: '';
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-color: rgba(56, 189, 248, 0.4);
+  pointer-events: none;
+  transition: border-color 0.2s ease, width 0.2s ease, height 0.2s ease;
+}
+.crosshair-corner::before {
+  top: -1px;
+  left: -1px;
+  border-top: 1.5px solid;
+  border-left: 1.5px solid;
+}
+.crosshair-corner::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 1.5px solid;
+  border-right: 1.5px solid;
+}
+.crosshair-corner:hover::before,
+.crosshair-corner:hover::after {
+  border-color: rgba(6, 182, 212, 0.85);
+  width: 12px;
+  height: 12px;
+}
+
+/* Technical Glass Card */
+.glass-panel {
+  background: rgba(12, 20, 36, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(56, 189, 248, 0.12);
+}
+
+.glass-panel-hover:hover {
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.15);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom modern cyan scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050811;
+}
+::-webkit-scrollbar-thumb {
+  background: #182642;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #06b6d4;
+}
+
+/* Alight & Radiant Text Illumination Styles */
+.text-alight {
+  color: #ffffff;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9), 0 0 20px rgba(6, 182, 212, 0.25);
+}
+
+.text-alight-cyan {
+  color: #67e8f9;
+  text-shadow: 0 0 12px rgba(6, 182, 212, 0.4), 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.text-alight-body {
+  color: #f1f5f9;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
+}
+
+/* Master White Headline "MEP Drawing" Intense Highlight */
+.mep-drawing-highlight {
+  position: relative;
+  display: inline-block;
+  color: #ffffff !important;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  padding: 0 0.15em;
+  text-shadow:
+    0 0 12px rgba(255, 255, 255, 1),
+    0 0 26px rgba(255, 255, 255, 0.9),
+    0 0 45px rgba(56, 189, 248, 0.95),
+    0 0 75px rgba(6, 182, 212, 0.85),
+    0 0 110px rgba(14, 165, 233, 0.6);
+  transition: all 0.3s ease;
+}
+
+/* Radiant backlight aura behind MEP Drawing */
+.mep-drawing-highlight::before {
+  content: '';
+  position: absolute;
+  inset: -6px -14px;
+  background: radial-gradient(ellipse at center, rgba(6, 182, 212, 0.32) 0%, rgba(56, 189, 248, 0.16) 45%, transparent 75%);
+  border-radius: 9999px;
+  z-index: -1;
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+/* Glowing precision laser underline highlight */
+.mep-drawing-highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 6%;
+  right: 6%;
+  height: 3.5px;
+  background: linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.9) 25%, #ffffff 50%, rgba(56, 189, 248, 0.9) 75%, transparent 100%);
+  box-shadow: 0 0 12px #38bdf8, 0 0 26px #06b6d4, 0 0 40px rgba(56, 189, 248, 0.6);
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+/* Fire Theme active MEP Drawing Headline Highlight */
+[data-font="fire"] .mep-drawing-highlight {
+  color: #ffffff !important;
+  text-shadow:
+    0 0 12px rgba(255, 255, 255, 1),
+    0 0 26px rgba(255, 255, 255, 0.95),
+    0 0 50px rgba(239, 68, 68, 0.98),
+    0 0 85px rgba(249, 115, 22, 0.85),
+    0 0 130px rgba(220, 38, 38, 0.65) !important;
+}
+
+[data-font="fire"] .mep-drawing-highlight::before {
+  background: radial-gradient(ellipse at center, rgba(239, 68, 68, 0.42) 0%, rgba(249, 115, 22, 0.22) 50%, transparent 75%) !important;
+}
+
+[data-font="fire"] .mep-drawing-highlight::after {
+  background: linear-gradient(90deg, transparent 0%, rgba(239, 68, 68, 0.95) 25%, #ffffff 50%, rgba(249, 115, 22, 0.95) 75%, transparent 100%) !important;
+  box-shadow: 0 0 14px #ef4444, 0 0 28px #f97316, 0 0 45px rgba(239, 68, 68, 0.7) !important;
+}
+
+.bg-radial-vignette {
+  background: radial-gradient(circle at center, transparent 30%, rgba(5, 8, 17, 0.85) 100%);
+}
+
